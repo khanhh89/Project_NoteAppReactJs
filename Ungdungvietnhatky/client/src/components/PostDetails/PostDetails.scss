@@ -1,0 +1,205 @@
+.thread {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px 14px;
+
+  &__avatar {
+    position: absolute;
+    left: 30px;
+    top: 115px;
+  }
+  &__back {
+    border: none;
+    background-color: #e6eef3;
+    // padding: 20px;
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+  &__card {
+    background: #ffffff; /* nền xám rất nhạt như ảnh */
+    border: 1px solid #e6eef3;
+    border-radius: 10px;
+    padding: 16px 18px 10px 42px; /* chừa bên trái cho avatar */
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 10px;
+    color: #0b1f33;
+  }
+
+  &__content {
+    background: #fff;
+    border: 1px solid #edf2f7;
+    border-radius: 8px;
+    padding: 12px 14px;
+    line-height: 1.6;
+    color: #0b1f33;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    padding: 10px 2px 0;
+    color: #667085;
+
+    .action {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      border: 0;
+      background: transparent;
+      color: #475467;
+      cursor: pointer;
+      padding: 0;
+
+      &:hover {
+        color: #1677ff;
+      }
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__viewall {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    margin: 8px 0 4px;
+    color: #1e7e34;
+    background: transparent;
+    border: 0;
+    font-weight: 600;
+    cursor: pointer;
+
+    .caret {
+      font-size: 12px;
+    }
+  }
+
+  /* ===== comments ===== */
+  &__comments {
+    margin-top: 6px;
+  }
+
+  .cmt {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    padding: 8px 0;
+
+    &__avatar {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__bubble {
+      background: #f4f7f9; /* nền xám trong khung */
+      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1px solid #ecf1f4;
+    }
+
+    &__text {
+      color: #0b1f33;
+    }
+
+    &__actions {
+      display: flex;
+      gap: 20px;
+      margin-top: 6px;
+
+      .action {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        color: #6b7280;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        &:hover {
+          color: #1677ff;
+        }
+      }
+    }
+  }
+}
+.postdetail-modal {
+  .ant-modal {
+    padding-bottom: 0; /* bỏ khoảng trắng dưới modal */
+  }
+
+  .ant-modal-content {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    animation: pd-fade-in .2s ease-out;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+  }
+
+  .ant-modal-close {
+    display: none; /* dùng nút back/close riêng trong PostDetail */
+  }
+
+  /* Thẻ bọc nội dung thực (card) – giúp canh giữa & đổ bóng */
+  .pd-card {
+    width: min(92vw, 760px);
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(2, 6, 23, .18);
+    overflow: hidden;
+    transform: translateY(4px);
+    animation: pd-slide-up .22s ease-out;
+  }
+
+  /* Nếu bên trong bạn dùng .thread (ở PostDetail) thì thêm polish nhẹ */
+  .thread {
+    padding: 16px 18px 14px;
+
+    @media (min-width: 576px) {
+      padding: 18px 22px 16px;
+    }
+  }
+
+  /* Nút back của bạn (.thread__back) trông như icon ghost */
+  .thread__back {
+    border: none;
+    outline: none;
+    background: #ffffff;
+    color: #0f172a;
+    // width: 34px;
+    // height: 34px
+  }}
+@media (max-width: 576px) {
+  .thread {
+    padding: 10px 10px;
+    &__card {
+      padding-left: 40px;
+    }
+    &__title {
+      font-size: 18px;
+    }
+  }
+}

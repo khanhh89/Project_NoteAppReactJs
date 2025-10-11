@@ -1,0 +1,172 @@
+
+.mgr-article__wrapper {
+  border: 1px solid #d9d9d9; 
+  border-radius: 8px; 
+  padding: 20px;
+  background-color: #ffffff; 
+  margin-top: 16px; /* Thêm khoảng cách nếu cần */
+}
+
+/* Container cho nút và tiêu đề để căn giữa Tiêu đề */
+.mgr-article__header {
+  display: flex;
+  justify-content: space-between; /* Đẩy nút sang trái, tiêu đề sang giữa */
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative; /* Dùng để căn chỉnh tiêu đề ra giữa khung */
+}
+
+/* Center the Title a bit better, reduce bottom margin slightly */
+.mgr-article__header .ant-typography-h3 {
+  /* Căn chỉnh tiêu đề ra giữa container header */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px !important;
+  margin-bottom: 0px !important; /* Xóa margin-bottom cũ để căn chỉnh tốt hơn */
+  font-weight: 800 !important;
+  color: black;
+}
+
+/* Style for the button container */
+.mgr-article__toolbar {
+  /* Thay thế bằng div chứa nút duy nhất */
+  margin-bottom: 0; 
+  z-index: 10; /* Đảm bảo nút nằm trên tiêu đề nếu giao diện hẹp */
+}
+
+/* --- Table Styles --- */
+
+/* Base table style */
+.mgr-article__table.ant-table-wrapper {
+  box-shadow: none; /* Xóa shadow vì đã có khung container */
+  border-radius: 0; 
+  overflow: hidden;
+  border: none; /* Xóa border của table nếu cần */
+}
+
+/* Compact table headers */
+.mgr-article__table.mgr-article__table--compact .ant-table-thead > tr > th {
+  background-color: #ffffff; /* Nền header trắng, không có màu xám */
+  color: #1f1f1f; /* Màu chữ header đen */
+  font-weight: 700; /* Bolder header */
+  padding: 12px 6px; /* Tăng padding header nhẹ */
+  font-size: 13px; /* Tăng cỡ chữ header nhẹ */
+}
+/* Loại bỏ border dưới của header */
+.mgr-article__table.ant-table-wrapper .ant-table-container table > thead > tr:first-child > *:first-child {
+    border-top-left-radius: 0;
+}
+.mgr-article__table.ant-table-wrapper .ant-table-container table > thead > tr:first-child > *:last-child {
+    border-top-right-radius: 0;
+}
+
+
+/* Table body rows */
+.mgr-article__table.mgr-article__table--compact .ant-table-tbody > tr > td {
+  padding: 10px 6px; /* Tăng padding thân bảng */
+  font-size: 13px; /* Tăng cỡ chữ nội dung nhẹ */
+  line-height: 1.5;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Title text column emphasis */
+.mgr-article__table .ant-table-cell .ant-typography-strong {
+  color: #262626;
+  font-size: 13px;
+}
+
+/* Content column ellipsis styling */
+.mgr-article__table .ant-table-cell-ellipsis {
+    max-width: 250px; 
+}
+
+/* Status Tags - Ensure consistent sizing */
+.ant-tag {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  height: 0px;
+  display: inline-flex;       /* tránh baseline */
+  align-items: center;        /* canh giữa theo trục dọc */
+  height: 26px;               /* hoặc bỏ height và dùng line-height */
+  line-height: 26px;          /* nếu dùng height thì có thể bỏ dòng này */
+  padding: 0 12px;            /* đổi từ padding trên/dưới sang 0 */
+  border-radius: 999px;
+  font-size: 13px;
+  // font-weight: 700;
+  vertical-align: middle; 
+}
+
+/* Actions Space - Ensure buttons are close and small */
+.ant-space-item > .ant-btn {
+  padding: 0 10px; /* Tăng nhẹ padding nút hành động */
+  height: 28px; /* Tăng nhẹ chiều cao nút hành động */
+  font-size: 12px; 
+  border-radius: 4px;
+}
+.ant-space-item > .ant-btn-default {
+    background-color: #e6ffe6; /* Màu nền xanh nhạt cho nút Sửa */
+    color: #52c41a; /* Màu chữ xanh lá cây */
+    border-color: #95de64;
+}
+.ant-space-item > .ant-btn-danger {
+    background-color: #ffccc7; /* Màu nền đỏ nhạt cho nút Xóa */
+    color: #ff4d4f; /* Màu chữ đỏ */
+    border-color: #ffa39e;
+}
+
+.ant-select-single.ant-select-sm, .ant-select-single .ant-select-selector {
+    height: 28px !important; 
+}
+
+.ant-select-single .ant-select-selection-item {
+    line-height: 28px !important;
+    font-size: 12px;
+}
+/* === STATUS TAGS === */
+.ant-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 12px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+/* === ACTION BUTTONS === */
+/* Nút Sửa: đỏ */
+.ant-space-item .btn-edit-red {
+  
+  background: #389e0d !important;
+  color: white !important;            /* xanh lá antd */
+  border-color: #b7eb8f;
+}
+.ant-space-item .btn-edit-red:hover {
+   background: #eaffea;
+  color: #237804;
+  border-color: #95de64;
+}
+
+/* Nút Xóa: xanh */
+.ant-space-item .btn-delete-green {
+  background: red !important;
+  color: white !important;            /* đỏ antd */
+  border-color: #ffa39e;
+}
+.ant-space-item .btn-delete-green:hover {
+ 
+  background: #ffe2e0;
+  color: #cf1322;
+  border-color: #ff7875;
+}
+
+/* Gỡ/ghi đè các style cũ đang áp lên tất cả btn trong .ant-space-item */
+.ant-space-item > .ant-btn-default,
+.ant-space-item > .ant-btn-danger {
+  background: initial;
+  color: initial;
+  border-color: initial;
+}

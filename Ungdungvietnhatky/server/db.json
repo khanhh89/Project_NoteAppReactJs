@@ -1,0 +1,137 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Nguyen",
+      "lastName": "Duc",
+      "email": "daokhanh@gmail.com",
+      "password": "123456",
+      "isBlocked": true
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 5
+    },
+    {
+      "id": 2,
+      "firstName": "Nguyen",
+      "lastName": "Khanh",
+      "email": "NguyenKhanh@gmail.com",
+      "password": "123456",
+      "isBlocked": true
+    },
+    {
+      "firstName": "Dao",
+      "lastName": "Khanh",
+      "email": "Khanhh1@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "username": "@Khanhh1",
+      "name": "Dao Khanh",
+      "avatar": "",
+      "id": 3
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 6
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 4
+    },
+    {
+      "id": 7,
+      "firstName": "Admin",
+      "lastName": "Super",
+      "email": "khanh@gmail.com",
+      "password": "000000",
+      "isBlocked": false,
+      "role": "admin"
+    }
+  ],
+  "categories": [
+    {
+      "id": 3,
+      "name": "Danh mục 4"
+    }
+  ],
+  "articles": [
+    {
+      "title": "sda",
+      "categoryId": 3,
+      "content": "sdakdadasshjdadadad",
+      "status": "Public",
+      "image": "https://placehold.co/600x400",
+      "mood": "confused",
+      "id": 1
+    },
+    {
+      "title": "sda",
+      "categoryId": 3,
+      "content": "sadasd",
+      "status": "Public",
+      "image": "https://placehold.co/600x400",
+      "mood": "angry",
+      "id": 2
+    },
+    {
+      "title": "sdad",
+      "categoryId": 3,
+      "content": "ádasdasd",
+      "status": "Public",
+      "image": "https://placehold.co/600x400",
+      "mood": "angry",
+      "createdAt": "2025-10-10T18:54:04.375Z",
+      "updatedAt": "2025-10-10T18:54:04.375Z",
+      "id": 3
+    },
+    {
+      "title": "A Productive Day at Work",
+      "categoryId": 3,
+      "content": "Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.",
+      "status": "Public",
+      "image": "https://placehold.co/600x400",
+      "mood": "happy",
+      "createdAt": "2025-10-10T19:00:54.515Z",
+      "updatedAt": "2025-10-10T19:03:06.755Z",
+      "id": 4
+    },
+    {
+      "title": "My First Job Interview Experience",
+      "categoryId": 3,
+      "content": "I had my first job interview today! I was nervous at first, but as the conversation went on, I felt more confident.",
+      "status": "Public",
+      "image": "https://placehold.co/600x400",
+      "mood": "confused",
+      "createdAt": "2025-10-10T19:01:36.347Z",
+      "updatedAt": "2025-10-10T19:01:36.347Z",
+      "id": 5
+    },
+    {
+      "title": "Learning a New Skill",
+      "categoryId": 3,
+      "content": "Started learning how to play the guitar. It's challenging but fun.",
+      "status": "Public",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd0VGHX6Lj9LN6ApZDL1C6Qn8Lx8W6VwbIvg&s",
+      "mood": "sad",
+      "createdAt": "2025-10-10T19:03:39.106Z",
+      "updatedAt": "2025-10-10T19:03:39.106Z",
+      "id": 6
+    }
+  ]
+}
