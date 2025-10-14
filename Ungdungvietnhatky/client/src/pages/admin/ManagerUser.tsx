@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import "./ManagerUser.scss";
-import { FcSearch } from "react-icons/fc";
+import { SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
 import PaginationBar from "../../components/PaginationBar/PaginationBar";
-import { Spin } from "antd"; // 👈 lazy loading xoay tròn
+import { Spin } from "antd"; 
 
 type ApiUser = {
   id: number;
@@ -73,7 +73,7 @@ export default function ManagerUser() {
     fetchUsers();
   }, []);
 
-  // --- search ---
+  //search
   const filteredUsers = useMemo(() => {
     const q = searchTerm.trim().toLowerCase();
     if (!q) return users;
@@ -85,14 +85,14 @@ export default function ManagerUser() {
     );
   }, [users, searchTerm]);
 
-  // --- pagination ---
+  // pagination 
   const total = filteredUsers.length;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const page = Math.min(currentPage, totalPages);
   const start = (page - 1) * PAGE_SIZE;
   const pageData = filteredUsers.slice(start, start + PAGE_SIZE);
 
-  // --- actions ---
+  // actions
   const handleBlock = async (id: number) => {
     const prev = users;
     const next = users.map((u) =>
@@ -120,8 +120,6 @@ export default function ManagerUser() {
       setUsers(prev);
     }
   };
-
-  // --- render ---
   return (
     <main className="main-content">
       <div className="content-area">
@@ -133,7 +131,7 @@ export default function ManagerUser() {
 
           <div className="search-box">
             <span className="search-icon">
-              <FcSearch />
+              <SearchOutlined style={{ color: "rgba(0,0,0,.45)" }} />
             </span>
             <input
               type="text"
@@ -146,10 +144,7 @@ export default function ManagerUser() {
             />
           </div>
         </div>
-
         {err && <div style={{ color: "crimson", marginBottom: 12 }}>{err}</div>}
-
-        {/* 👇 Lazy loading xoay tròn */}
         <Spin spinning={loading} size="large" tip="Đang tải..." delay={50000}>
           <div className="table-container">
             <table className="users-table">

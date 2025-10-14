@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Avatar } from "antd";
+// PostDetails.tsx (thay cho PostThread cũ)
+import React, { useEffect, useState } from "react";
+import { Avatar, Spin, Alert, Empty } from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
@@ -7,7 +8,22 @@ import {
   UpOutlined,
   LeftOutlined,
 } from "@ant-design/icons";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import "./PostDetails.scss";
+
+type Status = "Public" | "Private";
+interface Article {
+  id: number;
+  image: string;
+  title: string;
+  categoryId: number;
+  content: string;
+  status: Status;
+  mood: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
 
 type Comment = {
   id: number;
@@ -18,19 +34,12 @@ type Comment = {
   replies: number;
 };
 
-type Props = {
-  onBack?: () => void;
-  title?: string;
-  content?: string;
-  authorAvatar?: string;
-};
-
 const seedComments: Comment[] = [
   {
     id: 1,
     author: "Jenny",
     avatar:
-      "https://sonq1.com.vn/upload/product/airblade-125i-do-phong-cach-ducati-voi-cac-mon-do-choi-chinh-hang1658824228.jpg",
+      "https://i.pravatar.cc/100?img=12",
     text: "Very good!",
     likes: 15,
     replies: 6,
@@ -39,36 +48,105 @@ const seedComments: Comment[] = [
     id: 2,
     author: "Miki",
     avatar:
-      "https://ttracing.net/wp-content/uploads/2021/06/CO-TITAN-32-RA-35-RA-51.jpg",
+      "https://i.pravatar.cc/100?img=21",
     text: "Hello Rikkei!",
     likes: 10,
     replies: 3,
   },
 ];
 
-export default function PostThread({
-  onBack,
-  title = "A Productive Day at Work",
-  content = `Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.
-After work, I went for a walk in the park, enjoying the fresh air. Looking forward to another great day tomorrow!`,
-  authorAvatar = "https://vuquantuvi.wordpress.com/wp-content/uploads/2016/04/111.jpg",
-}: Props) {
-  const [showAll, setShowAll] = useState(true);
-  const [likes, setLikes] = useState(15);
+const isBlobUrl = (u?: string) => !!u && u.startsWith("blob:");
+const safeImg = (u?: string) =>
+  !u || isBlobUrl(u) ? "https://placehold.co/200x200" : u;
 
-  const handleBack = () => {
-    if (onBack) onBack();
-    else window.history.back();
-  };
+export default function PostDetails() {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const location = useLocation() as { state?: any };
+
+  const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  // Local UI states
+  const [showAll, setShowAll] = useState(true);
+  const [likes, setLikes] = useState(0);
+
+  useEffect(() => {
+    // Nếu có state từ list thì dùng ngay để tránh nháy
+    if (location.state?.title || location.state?.content) {
+      const st = location.state;
+      setArticle({
+        id: Number(id),
+        title: st.title,
+        content: st.content || st.excerpt || "",
+        image: st.img,
+        categoryId: st.categoryId ?? 0,
+        status: (st.status as Status) || "Public",
+        mood: st.mood || "",
+        createdAt: st.createdAt,
+        updatedAt: st.updatedAt,
+      });
+    }
+  }, [id, location.state]);
+
+  useEffect(() => {
+    // Luôn fetch theo id để đảm bảo reload/direct-link hoạt động
+    if (!id) return;
+    (async () => {
+      try {
+        setLoading(true);
+        setErr(null);
+        const { data } = await axios.get<Article>(
+          `http://localhost:8080/articles/${id}`
+        );
+        setArticle(data);
+      } catch (e: any) {
+        if (e?.response?.status === 404) {
+          setErr("Bài viết không tồn tại (404).");
+        } else {
+          setErr("Không thể tải bài viết. Vui lòng thử lại.");
+        }
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [id]);
+
+  const handleBack = () => navigate(-1);
+
+  if (loading) {
+    return (
+      <div className="thread thread--center">
+        <Spin />
+      </div>
+    );
+  }
+
+  if (err) {
+    return (
+      <div className="thread thread--center">
+        <Alert type="error" message={err} showIcon />
+      </div>
+    );
+  }
+
+  if (!article) {
+    return (
+      <div className="thread thread--center">
+        <Empty description="Không tìm thấy bài viết" />
+      </div>
+    );
+  }
 
   return (
     <div className="thread">
-      {/* Avatar người đăng */}
+      {/* Avatar người đăng: dùng article.image (yêu cầu “avatar tương ứng với bài viết”)
+          Nếu ảnh là blob: fallback placeholder để không lỗi */}
       <div className="thread__avatar">
-        <Avatar size={32} src={authorAvatar} />
+        <Avatar size={32} src={safeImg(article.image)} />
       </div>
 
-      {/* Thẻ bài viết */}
       <div className="thread__card">
         <div className="thread__header">
           <button
@@ -79,40 +157,28 @@ After work, I went for a walk in the park, enjoying the fresh air. Looking forwa
           >
             <LeftOutlined />
           </button>
-          <h2 className="thread__title">{title}</h2>
+          {/* <h2 className="thread__title">{article.title}</h2> */}
         </div>
 
-        <div className="thread__content">{content}</div>
+        <div className="thread__content">
+          <h2 className="thread__title">{article.title}</h2>
+          {article.content}
+          </div>
 
-        {/* Nút hành động */}
         <div className="thread__actions">
-          <button
-            className="action"
-            onClick={() => setLikes((n) => n + 1)}
-            type="button"
-          >
+          <button className="action" onClick={() => setLikes((n) => n + 1)} type="button">
             <LikeOutlined /> <span>{likes} Like</span>
           </button>
           <button className="action" type="button">
-            <MessageOutlined /> <span>6 Replies</span>
+            <MessageOutlined /> <span>{seedComments.length} Replies</span>
           </button>
         </div>
 
-        {/* Nút xem tất cả bình luận */}
-        <button
-          className="thread__viewall"
-          onClick={() => setShowAll((v) => !v)}
-          type="button"
-        >
-          <span>View all 12 comments</span>
-          {showAll ? (
-            <UpOutlined className="caret" />
-          ) : (
-            <DownOutlined className="caret" />
-          )}
+        <button className="thread__viewall" onClick={() => setShowAll((v) => !v)} type="button">
+          <span>View all {seedComments.length} comments</span>
+          {showAll ? <UpOutlined className="caret" /> : <DownOutlined className="caret" />}
         </button>
 
-        {/* Danh sách bình luận */}
         {showAll && (
           <div className="thread__comments">
             {seedComments.map((c) => (

@@ -1,6 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-// Pages
 import Home from "../pages/user/BlogPage/Home";
 import Login from "../pages/auth/Login/Login";
 import Register from "../pages/auth/Register/Register";
@@ -14,21 +12,18 @@ import PostDetails from "../components/PostDetails/PostDetails";
 import Unauthorized from "../pages/auth/Unauthorized"
 import { Navigate } from "react-router-dom";
 
-// Guard
 import ProtectedRoute from "../../src/components/ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
-  // Public
   { path: "/", element: <Home /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
   { path: "/my-posts", element: <AllMyPost /> },
-  { path: "/add-article", element: <AddArticle /> }, // nếu muốn cũng có thể bảo vệ bằng RequireAuth
+  { path: "/add-article", element: <AddArticle /> }, 
   { path: "/post/:id", element: <PostDetails /> },
   { path: "/unauthorized", element: <Unauthorized /> },
 
   // --- Khu vực ADMIN: phải đăng nhập & role=admin ---
-  // Cách 1: bọc trực tiếp layout Admin
 {
   path: "/admin/",
   element: (
@@ -37,11 +32,10 @@ const router = createBrowserRouter([
     </ProtectedRoute>
   ),
   children: [
-    // (khuyến nghị) route mặc định
     { index: true, element: <Navigate to="manager-user" replace /> },
     { path: "manager-user", element: <ManagerUser /> },
     { path: "manager-post", element: <ManagerPost /> },
-    { path: "manager-article", element: <ManagerArticle /> }, // ✅ trùng menu
+    { path: "manager-article", element: <ManagerArticle /> }, 
   ],
 },
 

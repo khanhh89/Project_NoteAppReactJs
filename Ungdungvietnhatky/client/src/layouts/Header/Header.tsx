@@ -3,7 +3,8 @@ import Logo from "../../assets/Header/Chiplogoo.png";
 import { Button } from "antd";
 import { Search } from "lucide-react";
 import "./Header.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type CurrentUser = {
   id: number;
@@ -11,15 +12,16 @@ type CurrentUser = {
   firstName?: string;
   lastName?: string;
   role?: "admin" | "user";
-  avatarUrl?: string; // nếu sau này bạn muốn lưu avatar
+  avatarUrl?: string;
 };
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [user, setUser] = useState<CurrentUser | null>(null);
+  const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // đọc user từ localStorage
   const loadUser = () => {
     try {
       const raw = localStorage.getItem("currentUser");
@@ -31,7 +33,6 @@ export default function Header() {
 
   useEffect(() => {
     loadUser();
-    // lắng nghe thay đổi từ tab khác
     const handler = (e: StorageEvent) => {
       if (e.key === "currentUser") loadUser();
     };
@@ -39,7 +40,38 @@ export default function Header() {
     return () => window.removeEventListener("storage", handler);
   }, []);
 
-  const handleLogout = () => {
+  // Đồng bộ keyword với query khi đổi route
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    setKeyword(params.get("q") || "");
+  }, [location.search]);
+
+  // Hỏi trước khi đăng xuất
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Đăng xuất?",
+      text: "Bạn có chắc muốn đăng xuất khỏi tài khoản hiện tại?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Đăng xuất",
+      cancelButtonText: "Hủy",
+      confirmButtonColor: "#ff4d4f",
+      cancelButtonColor: "#595959",
+      reverseButtons: true,
+      focusCancel: true,
+    });
+
+    if (!result.isConfirmed) return;
+
+    await Swal.fire({
+      icon: "success",
+      title: "Đăng xuất thành công!",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#1677ff",
+      timer: 1500,
+      timerProgressBar: true,
+    });
+
     localStorage.removeItem("currentUser");
     setUser(null);
     setOpenMenu(false);
@@ -50,6 +82,19 @@ export default function Header() {
     user?.firstName || user?.lastName
       ? `${user.firstName || ""} ${user.lastName || ""}`.trim()
       : user?.email?.split("@")[0];
+
+  // Submit tìm kiếm
+  const doSearch = () => {
+    const q = keyword.trim();
+    navigate({
+      pathname: "/",
+      search: q ? `?q=${encodeURIComponent(q)}` : "",
+    });
+  };
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === "Enter") doSearch();
+  };
 
   return (
     <div className="header">
@@ -62,24 +107,28 @@ export default function Header() {
 
       <div className="header__search">
         <div className="search-box">
-          <input type="text" placeholder="Search for articles" />
-          <Search size={18} />
+          <input
+            type="text"
+            placeholder="Search for articles"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            onKeyDown={onKeyDown}
+          />
+          <Search size={18} onClick={doSearch} style={{ cursor: "pointer" }} />
         </div>
       </div>
 
       <div className="header__actions">
-        {/* Nếu CHƯA đăng nhập → 2 nút */}
         {!user ? (
           <>
             <Link to="/register">
               <Button>Sign Up</Button>
             </Link>
             <Link to="/login">
-              <Button type="">Sign In</Button>
+              <Button>Sign In</Button>
             </Link>
           </>
         ) : (
-          // ĐÃ đăng nhập → avatar + menu (tái dùng style của HeaderLogin)
           <div
             className="header__profile"
             onClick={() => setOpenMenu((s) => !s)}
@@ -87,19 +136,18 @@ export default function Header() {
             <img
               src={
                 user.avatarUrl ||
-                "https://i.pravatar.cc/150?img=3"
+                "https://cdn2.fptshop.com.vn/small/avatar_trang_1_cd729c335b.jpg"
               }
               alt="User Avatar"
               className="header__profile-avatar"
             />
-
             <div className={`header__profile-menu ${openMenu ? "active" : ""}`}>
               <div className="profile-info">
                 <div className="profile-img">
                   <img
                     src={
                       user.avatarUrl ||
-                      "https://i.pravatar.cc/150?img=3"
+                      "https://cdn2.fptshop.com.vn/small/avatar_trang_1_cd729c335b.jpg"
                     }
                     alt="Profile"
                   />
@@ -109,14 +157,19 @@ export default function Header() {
                   <small>{user.email}</small>
                 </div>
               </div>
-
               <div className="menu-item" onClick={() => navigate("/profile")}>
                 View profile
               </div>
-              <div className="menu-item" onClick={() => navigate("/profile/photo")}>
+              <div
+                className="menu-item"
+                onClick={() => navigate("/profile/photo")}
+              >
                 Update profile picture
               </div>
-              <div className="menu-item" onClick={() => navigate("/profile/password")}>
+              <div
+                className="menu-item"
+                onClick={() => navigate("/profile/password")}
+              >
                 Change password
               </div>
               <div className="menu-item" onClick={handleLogout}>

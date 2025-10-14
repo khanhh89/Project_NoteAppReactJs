@@ -23,7 +23,7 @@
       "lastName": "Khanh",
       "email": "NguyenKhanh@gmail.com",
       "password": "123456",
-      "isBlocked": true
+      "isBlocked": false
     },
     {
       "firstName": "Dao",
@@ -67,60 +67,46 @@
   "categories": [
     {
       "id": 3,
-      "name": "Danh mục 4"
+      "name": "Daily Journal"
+    },
+    {
+      "name": "Work & Career",
+      "id": 4
+    },
+    {
+      "name": "IT",
+      "id": 5
+    },
+    {
+      "name": "Học bài",
+      "id": 6
+    },
+    {
+      "name": "Chơi trò chơi",
+      "id": 7
     }
   ],
   "articles": [
-    {
-      "title": "sda",
-      "categoryId": 3,
-      "content": "sdakdadasshjdadadad",
-      "status": "Public",
-      "image": "https://placehold.co/600x400",
-      "mood": "confused",
-      "id": 1
-    },
-    {
-      "title": "sda",
-      "categoryId": 3,
-      "content": "sadasd",
-      "status": "Public",
-      "image": "https://placehold.co/600x400",
-      "mood": "angry",
-      "id": 2
-    },
-    {
-      "title": "sdad",
-      "categoryId": 3,
-      "content": "ádasdasd",
-      "status": "Public",
-      "image": "https://placehold.co/600x400",
-      "mood": "angry",
-      "createdAt": "2025-10-10T18:54:04.375Z",
-      "updatedAt": "2025-10-10T18:54:04.375Z",
-      "id": 3
-    },
     {
       "title": "A Productive Day at Work",
       "categoryId": 3,
       "content": "Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.",
       "status": "Public",
-      "image": "https://placehold.co/600x400",
-      "mood": "happy",
-      "createdAt": "2025-10-10T19:00:54.515Z",
-      "updatedAt": "2025-10-10T19:03:06.755Z",
-      "id": 4
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760282472/td51acluza2bk6zp7bo4.png",
+      "mood": "confused",
+      "id": 1,
+      "updatedAt": "2025-10-12T15:21:12.772Z"
     },
     {
       "title": "My First Job Interview Experience",
-      "categoryId": 3,
+      "categoryId": 4,
       "content": "I had my first job interview today! I was nervous at first, but as the conversation went on, I felt more confident.",
       "status": "Public",
-      "image": "https://placehold.co/600x400",
-      "mood": "confused",
-      "createdAt": "2025-10-10T19:01:36.347Z",
-      "updatedAt": "2025-10-10T19:01:36.347Z",
-      "id": 5
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760286223/efx2uahcxcissn4ww0uz.png",
+      "mood": "angry",
+      "id": 2,
+      "updatedAt": "2025-10-14T12:14:13.686Z",
+      "userId": 7
     },
     {
       "title": "Learning a New Skill",
