@@ -1,0 +1,88 @@
+.team {
+  height: 100vh;
+  background: #fafafa;
+  overflow-y: hidden !important;
+  &__sider {
+    background: #f7f7fb;
+    border-right: 1px solid #eee;
+    padding: 16px 12px;
+  }
+
+  .side-buttons { display: grid; gap: 12px; }
+  .side-btn {
+    text-align: left;
+    height: 36px;
+    border-radius: 8px;
+    background: #eef4ff;
+    border: 1px solid #cfe1ff;
+
+    .anticon { margin-right: 8px; }
+    &.danger {
+      background: #fff1f2;
+      border-color: #fecdd3;
+      color: #e11d48;
+    }
+  }
+
+  &__content {
+    padding: 24px 24px 32px;
+  }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .title {
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mini-tag {
+      background: #f5f2ff;
+      color: #6f42c1;
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .search {
+      border-radius: 10px;
+      height: 36px;
+    }
+  }
+
+  &__table {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .ant-table-thead > tr > th {
+      background: #fff;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .name { font-weight: 600; }
+    .handle { color: #8a8f98; font-size: 12px; }
+    .email { color: #3b3f46; }
+
+    .active { color: #16a34a; font-weight: 600; }
+
+    .link-purple { color: #7c3aed; font-weight: 700; }
+    .link-blue { color: #3b82f6; font-weight: 700; }
+
+    .icon-sort { font-size: 14px; color: #9aa1aa; }
+  }
+}
+
+/* responsive */
+@media (max-width: 992px) {
+  .team .toolbar { grid-template-columns: 1fr; }
+  .team .toolbar .search { width: 100%; }
+}

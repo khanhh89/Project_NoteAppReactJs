@@ -1,0 +1,151 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Nguyen",
+      "lastName": "Duc",
+      "email": "daokhanh@gmail.com",
+      "password": "123456",
+      "isBlocked": true
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 5
+    },
+    {
+      "id": 2,
+      "firstName": "Nguyen",
+      "lastName": "Khanh",
+      "email": "NguyenKhanh@gmail.com",
+      "password": "123456",
+      "isBlocked": true
+    },
+    {
+      "firstName": "Dao",
+      "lastName": "Khanh",
+      "email": "Khanhh1@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "username": "@Khanhh1",
+      "name": "Dao Khanh",
+      "avatar": "",
+      "id": 3
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 6
+    },
+    {
+      "firstName": "Kiên",
+      "lastName": "Đao",
+      "email": "Kiendao123@gmail.com",
+      "password": "123456",
+      "isBlocked": false,
+      "avatar": "",
+      "id": 4
+    },
+    {
+      "id": 7,
+      "firstName": "Admin",
+      "lastName": "Super",
+      "email": "khanh@gmail.com",
+      "password": "000000",
+      "isBlocked": false,
+      "role": "admin"
+    }
+  ],
+  "categories": [
+    {
+      "id": 3,
+      "name": "Daily Journal"
+    },
+    {
+      "name": "Work & Career",
+      "id": 4
+    },
+    {
+      "name": "Personal Thoughts",
+      "id": 5
+    }
+  ],
+  "articles": [
+    {
+      "title": "A Productive Day at Work",
+      "categoryId": 3,
+      "content": "Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.",
+      "status": "Public",
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760282472/td51acluza2bk6zp7bo4.png",
+      "mood": "confused",
+      "id": 1,
+      "updatedAt": "2025-10-12T15:21:12.772Z"
+    },
+    {
+      "title": "My First Job Interview Experience",
+      "categoryId": 4,
+      "content": "I had my first job interview today! I was nervous at first, but as the conversation went on, I felt more confident.",
+      "status": "Public",
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760286223/efx2uahcxcissn4ww0uz.png",
+      "mood": "angry",
+      "id": 2,
+      "updatedAt": "2025-10-12T16:23:41.691Z",
+      "userId": 7
+    },
+    {
+      "title": "Overthinking Everything",
+      "categoryId": 5,
+      "content": "Lately, I have been overthinking everything, from small decisions to bigger life choices.I know I should trust myself",
+      "status": "Public",
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760286277/gxshjdkcxrvvw59myen5.png",
+      "mood": "angry",
+      "createdAt": "2025-10-10T18:54:04.375Z",
+      "updatedAt": "2025-10-14T06:04:40.382Z",
+      "id": 3,
+      "userId": 7
+    },
+    {
+      "title": "Learning a New Skill",
+      "categoryId": 3,
+      "content": "Started learning how to play the guitar. It's challenging but fun.",
+      "status": "Public",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd0VGHX6Lj9LN6ApZDL1C6Qn8Lx8W6VwbIvg&s",
+      "mood": "sad",
+      "createdAt": "2025-10-10T19:03:39.106Z",
+      "updatedAt": "2025-10-10T19:03:39.106Z",
+      "id": 6
+    },
+    {
+      "id": 9,
+      "title": "My First Job Interview  123",
+      "categoryId": 5,
+      "content": "Starting a community doesn’t need to be complicated, but how do you get started?",
+      "status": "Public",
+      "image": "https://res.cloudinary.com/dfzpwkldb/image/upload/v1760285820/slbsbioqwbdhociz3geu.png",
+      "mood": "excited",
+      "createdAt": "2025-10-12T16:16:57.569Z",
+      "updatedAt": "2025-10-14T06:16:31.641Z",
+      "userId": 7
+    },
+    {
+      "title": "adad",
+      "categoryId": 4,
+      "content": "ádasd",
+      "status": "Public",
+      "image": "https://placehold.co/1200x800",
+      "mood": "confused",
+      "createdAt": "2025-10-14T07:50:01.909Z",
+      "updatedAt": "2025-10-14T07:50:01.909Z",
+      "userId": 1,
+      "id": 10
+    }
+  ]
+}

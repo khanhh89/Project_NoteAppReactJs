@@ -1,0 +1,85 @@
+.site-footer {
+  border-top: 1px solid #eee;
+  background: #fff;
+  color: #111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  &__inner {
+    max-width: 100%;
+    margin: 0 50px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 100px 1.7fr repeat(3, 1fr);
+    gap: 28px 70px;
+    align-items: flex-start;
+  }
+
+  .brand__name {
+    font-size: 20px; 
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  .about {
+    font-size: 16px;
+    line-height: 1.6;
+
+    strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 0;
+      color: #555;
+      max-width: 420px;
+    }
+  }
+
+  .col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    a {
+      color: #111;
+      font-size: 13px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 14px 0 24px;
+    text-align: center;
+  }
+
+  .socials {
+    display: inline-flex;
+    gap: 20px;
+
+    a {
+      color: #111;
+      font-size: 15px;
+      line-height: 1;
+      transition: opacity .15s ease;
+
+      &:hover { opacity: .6; }
+    }
+  }
+}
+

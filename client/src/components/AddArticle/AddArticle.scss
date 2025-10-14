@@ -1,0 +1,99 @@
+.article {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  margin: 20px auto;
+  border-radius: 6px;
+  padding: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+    min-height: 100%;
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .article__icon { font-size: 18px; }
+    .article__close {
+      margin-left: auto;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      color: #555;
+      font-size: 14px;
+    }
+  }
+
+ &__form {
+    .ant-form-item { margin-bottom: 12px; }
+    .ant-form-item-label > label { color: #222; font-weight: 600; font-size: 13px; }
+    .ant-input, .ant-input-affix-wrapper, .ant-input-textarea { background: #fff; border-color: #e6e6e6; }
+    textarea.ant-input { resize: vertical; }
+  }
+
+  .mood-chip {
+    border: 1px solid #e8e8e8;
+    background: #f6f6f6;
+    color: #222;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    span { margin-right: 4px; }
+  }
+  .article--transparent {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+
+
+  &__uploader {
+    width: 200px;
+    
+    .ant-upload-wrapper {
+      width: 100px ;
+    }
+    .ant-upload-drag {
+      border: 2px dashed #e0e0e0;
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+    .ant-upload-text {
+      color: #6b7280;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    
+  }
+
+  &__actions {
+    margin-top: 12px;
+    gap: 12px;
+    display: flex;
+    align-items: center;;
+  }
+
+  &__submit:hover{
+    background-color: rgb(0, 116, 21) !important;
+   
+  }
+
+&__submit{
+  background-color: rgb(0, 116, 21);
+  color: #e0e0e0;
+}
+}
+

@@ -1,0 +1,113 @@
+.category-manager-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0px;
+    
+    // background-color: #f0f2f5; /* Nền nhẹ */
+}
+
+/* Thanh tìm kiếm phía trên */
+.category-search-bar {
+    text-align: end;
+    margin-bottom: 30px;
+    border-radius: 0;
+}
+.category-search-bar .ant-input-affix-wrapper {
+    padding: 8px 25px;
+    border: none;
+    margin-right: 50px;
+}
+
+/* Card chính */
+.category-manager-card {
+    padding: 24px;
+    // border-radius: 8px;
+    // box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Tiêu đề chính */
+.category-main-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #333;
+    margin: auto;
+    align-items: center !important;
+    // padding-bottom: 12px;
+    // border-bottom: 1px solid #f0f0f0;
+    // margin-bottom: 20px !important;
+}
+.icon-main-title {
+    margin-right: 8px;
+    color: #08c;
+}
+
+/* Phần thêm danh mục */
+.category-add-section {
+    margin-bottom: 30px;
+    padding: 16px;
+    // background-color: #f9f9f9;
+    // border-radius: 4px;
+    // border: 1px solid #eee;
+}
+
+.category-add-section .ant-input {
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+/* Nút Add Category */
+.add-category-button {
+    background-color: #5cb85c; /* Màu xanh lá cây đậm như ảnh */
+    border-color: #5cb85c;
+    color: white;
+    font-weight: 500;
+    padding: 0 20px;
+    height: 40px;
+    border-radius: 4px;
+    width: 100%;
+}
+.add-category-button:hover, .add-category-button:focus {
+    background-color: #4cae4c !important;
+    border-color: #4cae4c !important;
+}
+
+.category-list-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #333;
+    margin-bottom: 12px !important;
+    margin-top: 0 !important;
+}
+.icon-list-title {
+    margin-right: 8px;
+    color: #999;
+}
+
+/* Bảng danh sách */
+.category-list-table .ant-table-thead > tr > th {
+    background-color: #f7f7f7;
+    font-weight: 600;
+    color: #555;
+    padding: 10px 8px;
+}
+
+.category-list-table .ant-table-tbody > tr > td {
+    padding: 8px;
+}
+
+/* Nút Sửa/Xóa */
+.action-button {
+    font-size: 12px;
+    height: 28px;
+    border-radius: 4px;
+ }
+ .edit-button {
+     background-color: #00a42f !important;
+    color: white !important;
+    border-color: #00a42f;
+}
+ .delete-button {
+    background-color: #ff4d4f !important;
+    color: white !important;
+    border-color: #ffa39e;
+ }

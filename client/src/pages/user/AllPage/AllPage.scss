@@ -1,0 +1,24 @@
+.btn-outline {
+  font-size: 32px;
+  height: 36px;
+  padding: 20px 14px;
+  border: none;
+  background: #ffffff !important;
+  color: #1677ff !important;
+  font-weight: 700;
+  margin-top: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: none;
+  &.ant-btn-disabled {
+    opacity: 0.6;
+    border-color: #a3c7ff !important;
+    color: #a3c7ff !important;
+  }
+}
+
+.post__excerpt {
+  height: 80px;
+}
